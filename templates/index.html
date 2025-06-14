@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Welcome to our Web App!</h1>
+    {% if username %}
+        <p>Hello, {{ username }}! You are logged in.</p>
+        <p>Go to your <a href="/dashboard">Dashboard</a>.</p>
+    {% else %}
+        <p>Please <a href="/register">register</a> or <a href="/login">log in</a> to continue.</p>
+    {% endif %}
+{% endblock %}

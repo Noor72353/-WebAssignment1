@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <h2>Welcome to your Dashboard, {{ username }}!</h2>
+    <p>This is a protected page. Only logged-in users can see this.</p>
+
+    <h3>Post a Comment</h3>
+    <form method="POST" action="/dashboard">
+        <textarea name="comment_text" rows="4" cols="50" placeholder="Type your comment here..." required></textarea><br>
+        <button type="submit">Post Comment</button>
+    </form>
+
+    <hr>
+
+    <h3>Recent Comments</h3>
+    {% if comments %}
+        {% for comment in comments %}
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+                <strong>{{ comment.username }}</strong> <span style="font-size: 0.8em; color: #666;">({{ comment.timestamp }})</span><br>
+                <p>{{ comment.comment_text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No comments yet. Be the first to post!</p>
+    {% endif %}
+{% endblock %}
